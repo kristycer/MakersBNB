@@ -48,3 +48,24 @@ As a space owner
 So that I don't miss out on bookings
 I want spaces to be available until a booking is confirmed
 ```
+
+Instructions
+---
+### Project Setup
+```
+$ git clone https://github.com/Iliyan-Y/makersBNB
+$ bundle
+```
+### Database Setup
+```
+$ psql
+
+CREATE DATABASE makersbnb;
+CREATE DATABASE makersbnb_test;
+```
+Then run the SQL scripts in the `db/migrations` folder.
+### To run the app
+```
+$ rackup -p 3000
+```
+Then in your browser navigate to `localhost:3000/`
