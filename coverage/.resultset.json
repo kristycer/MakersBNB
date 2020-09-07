@@ -1,10 +1,20 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/kristynacervenkova/Desktop/makersBNB/spec/features/home_page_spec.rb": {
+      "/Users/Maximize/Desktop/Makers/week6/makersBNB/spec/features/home_page_spec.rb": {
         "lines": [
           null,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -18,6 +28,6 @@
         ]
       }
     },
-    "timestamp": 1599491175
+    "timestamp": 1599492115
   }
 }
