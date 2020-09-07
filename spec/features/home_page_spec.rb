@@ -19,4 +19,10 @@ feature 'MakersBNB has a homepage' do
         expect(page).to have_content 'Book a space'
     end
 
+    scenario "User can list a space after log in" do 
+        visit "/spaces"
+        click_link "List a Space"
+        expect(page).to have_content "List a Space"
+    end
+
 end 
