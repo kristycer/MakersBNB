@@ -11,13 +11,15 @@ so that i can let multiple spaces
 i want to list more than one space
 ```
 ``` 
-As a user I should be able to name my space, 
+As a user 
+I should be able to name my space, 
 provide a short description of the space, 
 and a price per night.
 ```
 
 ``` 
-As a user I should be able to offer a range of dates 
+As a user 
+I should be able to offer a range of dates 
 where my space is available.
 ```
 ```
