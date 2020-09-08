@@ -13,5 +13,5 @@ click_button 'Create listing'
 expect(page).to have_content 'Book a space' #just checking it goes to right page
 
 
-end 
+    end 
 end 
