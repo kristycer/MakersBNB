@@ -34,7 +34,7 @@ class Space
   def self.search(available_from, available_to = nil)
 
     if available_to != nil
-      spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from = ('#{available_from}') AND available_to = ('#{available_to}')")
+      spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from >= ('#{available_from}') AND available_to <= ('#{available_to}')")
     else 
       spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from = ('#{available_from}')")
     end

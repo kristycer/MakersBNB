@@ -31,11 +31,14 @@ describe 'spaces' do
 
     space = Space.create(name: 'Test Property', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-10-01', available_to: '2020-11-01', owner: owner.id )
 
-    Space.create(name: 'Test Property 2', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-08-01', available_to: '2020-09-01', owner: owner.id )
+    Space.create(name: 'Test Property 2', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-10-02', available_to: '2020-10-29', owner: owner.id )
 
-    expect(Space.search("2020-10-01",'2020-11-01').length).to eq 1
+    Space.create(name: 'Test Property 3', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-08-01', available_to: '2020-09-01', owner: owner.id )
+
+    expect(Space.search("2020-10-01",'2020-11-01').length).to eq 2
     expect(Space.search("2020-10-01",'2020-11-01').first.name).to eq "Test Property"
-    expect(Space.search("2020-10-01",'2020-11-01').first.name).not_to eq "Test Property 2"
+    expect(Space.search("2020-10-01",'2020-11-01').last.name).to eq "Test Property 2"
+    expect(Space.search("2020-10-01",'2020-11-01').first.name).not_to eq "Test Property 3"
     
 
   end
