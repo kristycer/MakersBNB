@@ -1,17 +1,23 @@
 # frozen_string_literal: true
+require './database_connection_setup'
+require './models/user'
 
 require 'sinatra/base'
 
 class MakersBNB < Sinatra::Base
-
+  enable :sessions  
+  
+    before do
+      @user = session[:user]
+    end  
 
     get '/' do
-    
       erb :index
     end 
 
     post '/sign_up' do
-        redirect '/spaces'
+      session[:user] = User.create(name: params[:name], email: params[:email], password: params[:password])
+      redirect '/spaces'
     end 
 
     get '/log_in' do 
@@ -19,11 +25,13 @@ class MakersBNB < Sinatra::Base
     end
 
     post '/log_in' do 
+     user = User.authenticate(email: params[:email], password: params[:password])
+     session[:user] = user 
       redirect '/spaces'
     end
 
     get '/spaces' do
-        erb :spaces
+      erb :spaces
     end 
 
     get '/spaces/new' do 
