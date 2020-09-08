@@ -24,4 +24,34 @@ describe 'spaces' do
     expect(all_spaces.first.available_to).to eq '2020-11-01'
     
   end
+
+  it"Search for available space" do 
+
+    owner = User.create(name: 'Example', email: 'example@me.com', password: 'password123')
+
+    space = Space.create(name: 'Test Property', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-10-01', available_to: '2020-11-01', owner: owner.id )
+
+    Space.create(name: 'Test Property 2', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-08-01', available_to: '2020-09-01', owner: owner.id )
+
+    expect(Space.search("2020-10-01",'2020-11-01').length).to eq 1
+    expect(Space.search("2020-10-01",'2020-11-01').first.name).to eq "Test Property"
+    expect(Space.search("2020-10-01",'2020-11-01').first.name).not_to eq "Test Property 2"
+    
+
+  end
+
+  it "Search for all properties with statrt date only" do 
+    owner = User.create(name: 'Example', email: 'example@me.com', password: 'password123')
+
+    space = Space.create(name: 'Test Property', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-10-01', available_to: '2020-11-01', owner: owner.id )
+
+    Space.create(name: 'Test Property 2', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-08-01', available_to: '2020-09-01', owner: owner.id )
+
+    expect(Space.search("2020-10-01").length).to eq 1
+    expect(Space.search("2020-10-01").first.name).to eq "Test Property"
+    expect(Space.search("2020-10-01").first.name).not_to eq "Test Property 2"
+
+  end
+
+
 end

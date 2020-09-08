@@ -31,4 +31,17 @@ class Space
     
   end
 
+  def self.search(available_from, available_to = nil)
+
+    if available_to != nil
+      spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from = ('#{available_from}') AND available_to = ('#{available_to}')")
+    else 
+      spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from = ('#{available_from}')")
+    end
+
+    spaces.map do |space| 
+      Space.new(id: space['id'], name: space['name'], description: space['description'], location: space['location'], price: space['price'], available_from: space['available_from'], available_to: space['available_to'], owner: space['owner'])
+    end
+  end
+
 end
