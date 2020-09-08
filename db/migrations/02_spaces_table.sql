@@ -1,0 +1,1 @@
+CREATE TABLE spaces(id SERIAL PRIMARY KEY, name VARCHAR(140), description VARCHAR, location VARCHAR(140), price NUMERIC, available_from DATE, available_to DATE, owner INT references users(id));
