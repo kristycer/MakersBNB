@@ -7,5 +7,20 @@
 </head>
 <body>
     <h1>List a Space</h1>
+    <p>Add your property specification</p>
+    <form action='/spaces/new' method='post'>
+      <label for="property-name">Property name</label>
+        <input type="text" name='property-name'>
+      <label for="property-description">Property description</label>
+        <input type="text" name='property-description'>
+      <label for="property-price">Price per night (£)</label>
+        <input type="text" name='property-price'>
+      <label for='available-from'>Available from (DD/MM/YYYY)</label>
+        <input type="text" name='available-from'>
+      <label for='available-to'>Available to (DD/MM/YYYY)</label>
+        <input type="text" name='available-to'>
+    <input class="button" type="submit" value="Create listing">
+    </form>
+   
 </body>
 </html>

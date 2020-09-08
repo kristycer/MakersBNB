@@ -37,6 +37,10 @@ class MakersBNB < Sinatra::Base
       erb :space_new
     end
 
+    post '/spaces/new' do
+      redirect '/spaces'
+    end 
+
   
   run! if app_file == $0
   
