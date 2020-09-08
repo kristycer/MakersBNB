@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MakersBNB</title>
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+    
 </head>
 <body>
     <div>
         <a href="/log_in">Log in</a>
     </div>
+    <div class='form'>
     <form action="/sign_up" method="post">
     <input required type='name' name='name' placeholder='fullname'>
     <input required type="email" name="email" placeholder="Enter email">
@@ -16,5 +19,6 @@
     <input required type="password" name="Password confirmation" placeholder="Confirm the password">
     <input class="button" type="submit" value="Sign up">
     </form>
+    </div>
 </body>
 </html>
