@@ -36,3 +36,11 @@ input[type=text] {
   top: 75%;
   border-radius: 28px;
   transition: width .3s, border-radius .3s, height .3s .1s, top .3s .1s, background .0s .6s;
+}
+
+li {
+    list-style-type: none;
+    outline-style: solid;
+    padding: 0.5em;
+    margin: 1em;
+}

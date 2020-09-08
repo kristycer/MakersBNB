@@ -11,10 +11,20 @@
     
     <a href="/spaces/new">List a Space</a>
     <%= @user.name %>
-    <label for='available-from'>Available from (DD/MM/YYYY)</label>
-       <input type="text" name='available-from'>
-    <label for='available-to'>Available to (DD/MM/YYYY)</label>
-      <input type="text" name='available-to'>
-    <input class="button" type="submit" value="List Spaces">
+    <form action="/spaces/search" method="post">
+      <label for='available-from'>Available from (DD/MM/YYYY)</label>
+        <input type="text" name='available-from'>
+      <label for='available-to'>Available to (DD/MM/YYYY)</label>
+        <input type="text" name='available-to'>
+      <input class="button" type="submit" value="List Spaces">
+    </form>
+    <br>
+    <ul>
+    <% @spaces.each do |space|%>
+    <li>
+    <h3><%= space.name %></h3><p><%= space.description %> <%= space.location %> <%= space.price %><p>
+    </li>
+    <% end %>
+    </ul>
 </body>
 </html>

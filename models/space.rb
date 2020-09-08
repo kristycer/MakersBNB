@@ -31,12 +31,12 @@ class Space
     
   end
 
-  def self.search(available_from, available_to = nil)
+  def self.search(available_from, available_to = "")
 
-    if available_to != nil
+    if available_to != ""
       spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from >= ('#{available_from}') AND available_to <= ('#{available_to}')")
     else 
-      spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from = ('#{available_from}')")
+      spaces = DatabaseConnection.query("SELECT * FROM spaces WHERE available_from >= ('#{available_from}')")
     end
 
     spaces.map do |space| 
