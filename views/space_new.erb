@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" /> 
+    
     <title>MakersBNB</title>
 </head>
 <body>
-    <h1>List a Space</h1>
+    <h1 class='header'>List a Space</h1>
     <p>Add your property specification</p>
+    <div class='form'>
     <form action='/spaces/new' method='post'>
+    <span class="input"></span>
       <label for="property-name">Property name</label>
         <input type="text" name='property-name'>
+        <span class="input"></span>
       <label for="property-description">Property description</label>
         <input type="text" name='property-description'>
+        <span class="input"></span>
       <label for="property-location">Location</label>
         <input type="text" name='property-location'>
       <label for="property-price">Price per night (£)</label>
@@ -23,6 +29,7 @@
         <input type="text" name='available-to'>
     <input class="button" type="submit" value="Create listing">
     </form>
+    </div>
    
 </body>
 </html>
