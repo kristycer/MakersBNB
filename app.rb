@@ -55,6 +55,9 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/spaces/booking' do
+    # Booking.create(id: params[''], property_name: params[''], booking_date: params[''], total_price: params[''], name: params[''], email: params['']
+    # )
+    p params
     redirect '/spaces'
   end
 
