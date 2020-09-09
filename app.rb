@@ -18,7 +18,7 @@ class MakersBNB < Sinatra::Base
 
   post '/sign_up' do
     session[:user] = User.create(
-      name: params[:name], email: params[:email], password: params[:password])
+      name: params[:name], email: params[:email], password: params[:password])  
     redirect '/spaces'
   end 
 
@@ -27,9 +27,7 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/log_in' do 
-    user = User.authenticate(email: params[:email], password: params[:password])
-    session[:user] = user
-    p User.authenticate(email: params[:email], password: params[:password])
+    session[:user] = User.authenticate(email: params[:email], password: params[:password])
     redirect '/spaces'
   end
 

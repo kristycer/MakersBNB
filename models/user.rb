@@ -9,7 +9,13 @@ class User
     @id = id
     @name = name
     @email = email
-    @requests = []
+    @requests = [ 
+      {
+        "house" => "House Swamp",
+        "name" => "John",
+        "email" => "john@email.com"
+      }
+    ]
   end
 
   def self.create(name:, email:, password:)
