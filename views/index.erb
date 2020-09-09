@@ -8,17 +8,19 @@
     
 </head>
 <body>
+  <div>
     <div>
         <a class="btn" href="/log_in">Log in</a>
     </div>
-    <div class='form'>
-    <form action="/sign_up" method="post">
-    <input required type='name' name='name' placeholder='fullname'>
+
+    <form action="/sign_up" method="post" class='sign_up_form'>
+    <input required type='text' name='name' placeholder='fullname'>
     <input required type="email" name="email" placeholder="Enter email">
     <input required type="password" name="Password" placeholder="Enter password">
     <input required type="password" name="Password confirmation" placeholder="Confirm the password">
     <input class="button" type="submit" value="Sign up">
     </form>
-    </div>
+    
+  </div>  
 </body>
 </html>
