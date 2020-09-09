@@ -5,8 +5,8 @@ feature 'Booking' do
             log_in
             visit '/spaces'
             list_a_space
-        first('.space').click_button 'Book'
-        expect(page).to have_content('Booking confirmed')
-        expect(page).to have_content('Pick a night')
+            click_button 'Book'
+        expect(page).to have_content('Make a Booking')
+        expect(page).to have_content('Date of Stay')
     end 
 end 

@@ -50,8 +50,6 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/spaces/:id/booking' do
-    p "here"
-    p params
     @space_id = params[:id]
     erb :booking
   end
