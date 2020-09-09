@@ -40,7 +40,7 @@ describe 'spaces' do
     expect(Space.search("2020-10-01", '2020-11-01').first.name).not_to eq "Test Property 3"
   end
 
-  it "Search for all properties with statrt date only" do 
+  it "Search for all properties with start date only" do 
     owner = User.create(name: 'Example', email: 'example@me.com', password: 'password123')
 
     Space.create(name: 'Test Property', description: 'Something here', location: 'London', price: 5.00, available_from: '2020-10-01', available_to: '2020-11-01', owner: owner.id)

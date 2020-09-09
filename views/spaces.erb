@@ -22,7 +22,11 @@
     <ul>
     <% @spaces.each do |space|%>
     <li>
-    <h3><%= space.name %></h3><p><%= space.description %> <%= space.location %> <%= space.price %>£<p>
+      <h3><%= space.name %></h3>
+      <p><%= space.description %> <%= space.location %> £<%= space.price %><p>
+      <form action="spaces/<%= space.id %>/booking" method="GET">
+       <input type="submit" value="Book"/>
+      </form>
     </li>
     <% end %>
     </ul>
