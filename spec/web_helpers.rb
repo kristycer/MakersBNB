@@ -13,3 +13,5 @@ def log_in(email: 'john@email.com', password: '12345')
   fill_in 'Password', with: password
   click_button 'Log in'
 end 
+
+
