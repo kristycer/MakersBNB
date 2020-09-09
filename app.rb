@@ -49,6 +49,15 @@ class MakersBNB < Sinatra::Base
     erb :space_new
   end
 
+  get '/spaces/:id/booking' do
+    @space_id = params[:id]
+    erb :booking
+  end
+
+  post '/spaces/booking' do
+    redirect '/spaces'
+  end
+
   post '/spaces/new' do
     Space.create(
       name: params['property-name'], description: params['property-description'], 
@@ -57,11 +66,9 @@ class MakersBNB < Sinatra::Base
       available_to: params['available-to'], owner: @user.id)
     redirect '/spaces'
   end 
-
   get '/requests' do 
     erb :requests
   end
-
   
   run! if app_file == $0
   
