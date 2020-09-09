@@ -49,6 +49,14 @@ class MakersBNB < Sinatra::Base
     erb :space_new
   end
 
+  get '/spaces/booking' do
+    erb :booking
+  end
+
+  post '/spaces/booking' do
+    redirect '/spaces'
+  end
+
   post '/spaces/new' do
     Space.create(
       name: params['property-name'], description: params['property-description'], 
