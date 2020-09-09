@@ -25,3 +25,4 @@ def list_a_space(name: 'Test Property', description: 'Something here', location:
     click_button 'Create listing'
 
 end 
+

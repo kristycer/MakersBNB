@@ -18,7 +18,7 @@ class MakersBNB < Sinatra::Base
 
   post '/sign_up' do
     session[:user] = User.create(
-      name: params[:name], email: params[:email], password: params[:password])
+      name: params[:name], email: params[:email], password: params[:password])  
     redirect '/spaces'
   end 
 
@@ -66,6 +66,9 @@ class MakersBNB < Sinatra::Base
       available_to: params['available-to'], owner: @user.id)
     redirect '/spaces'
   end 
+  get '/requests' do 
+    erb :requests
+  end
   
   run! if app_file == $0
   
