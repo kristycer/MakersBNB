@@ -49,7 +49,10 @@ class MakersBNB < Sinatra::Base
     erb :space_new
   end
 
-  get '/spaces/booking' do
+  get '/spaces/:id/booking' do
+    p "here"
+    p params
+    @space_id = params[:id]
     erb :booking
   end
 
@@ -65,7 +68,6 @@ class MakersBNB < Sinatra::Base
       available_to: params['available-to'], owner: @user.id)
     redirect '/spaces'
   end 
-
   
   run! if app_file == $0
   
