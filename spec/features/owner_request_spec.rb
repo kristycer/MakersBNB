@@ -4,4 +4,6 @@ feature "Owner gets request and see the page" do
     click_link "Requests"
     expect(page).to have_content "Requests"
   end
+
 end
+
