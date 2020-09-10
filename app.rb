@@ -7,7 +7,7 @@ require './models/confirmation'
 require 'sinatra/base'
 
 class MakersBNB < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_overide
 
    
    
@@ -86,8 +86,13 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/requests/confirm' do
-    hang_on = Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'])
+    Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'])
     redirect '/spaces'
+  end
+
+  post '/requests/deny' do
+   DatabaseConnection.query("DELETE FROM requests WHERE id = #{params['id']}")
+    redirect '/requests'
   end
   
   run! if app_file == $0

@@ -8,9 +8,9 @@
           <input hidden name="property_id" value="<%=request.property_id%>">
           <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
         </form>
-       <form action='/request/deny' method='post'>
+       <form action='/requests/deny' method='post'>
          <input type='hidden' name='_method' value='DELETE'>
-         <input type="submit" value="Delete">
+         <button type="submit"  name= 'id' value="<%= request.id %>">Deny</button>
        </form>
     </div>
   <%end%>
