@@ -3,6 +3,7 @@ require './database_connection_setup'
 require './models/user'
 require './models/space'
 require './models/booking'
+require './models/confirmation'
 require 'sinatra/base'
 
 class MakersBNB < Sinatra::Base
@@ -60,6 +61,7 @@ class MakersBNB < Sinatra::Base
   get '/spaces/:id/booking' do
     session[:owner_id] = params[:owner_id]
     @space_id = params[:id]
+    @ello_ello = Confirmation.find(property_id: @space_id)
     erb :booking
   end
 
@@ -84,10 +86,7 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/requests/confirm' do
-    booked_space = Space.find(id: params['property_id'] )
-     booked_space.booked_dates.push(params['date'])
-   # booked_space.add_date(params['date'])
-   p  booked_space
+    hang_on = Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'])
     redirect '/spaces'
   end
   

@@ -73,16 +73,4 @@ class Space
         available_to: space['available_to'], owner: space['owner'])
     end
   end
-
-#   def self.booked_dates
-#     @booked_dates
-#   end
-
-#   def self.add_date(date)
-#     @booked_dates << date
-#   end
-
-#   def self.create_dates
-#     @booked_dates = []
-#   end
  end
