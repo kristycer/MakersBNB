@@ -80,6 +80,11 @@ class MakersBNB < Sinatra::Base
     @requests = Booking.find(id: @user.id) 
     erb :requests
   end
+
+  post '/requests/confirm' do
+    p params
+    redirect '/spaces'
+  end
   
   run! if app_file == $0
   

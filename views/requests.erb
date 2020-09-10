@@ -1,11 +1,16 @@
 <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
 <h1>Requests</h1>
-<ul >
+<ul>
   <% @requests.each do |request|%>
     <div>
       <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %> </h3>
-      <a class='btn' href="">Confirm</a>
-      <a class='btn' href="">Deny</a>
+        <form action='/requests/confirm' method='post'>
+          <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
+        </form>
+       <form action='/request/deny' method='post'>
+         <input type='hidden' name='_method' value='DELETE'>
+         <input type="submit" value="Delete">
+       </form>
     </div>
   <%end%>
 </ul>
