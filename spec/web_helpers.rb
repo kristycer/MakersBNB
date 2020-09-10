@@ -1,9 +1,9 @@
-def sign_up(name: 'John', email: 'john@email.com', password: '12345', password_confirmation: '123456')
+def sign_up(name: 'John', email: 'john@email.com', password: '12345', password_confirmation: '12345')
   visit '/'
   fill_in 'name', with: name
   fill_in 'email', with: email
   fill_in 'Password', with: password
-  fill_in 'Password confirmation', with: password_confirmation
+  fill_in 'Password_confirmation', with: password_confirmation
   click_button 'Sign up'
 end 
 

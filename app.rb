@@ -5,9 +5,13 @@ require './models/space'
 require './models/booking'
 require './models/confirmation'
 require 'sinatra/base'
+require 'sinatra/flash'
 
 class MakersBNB < Sinatra::Base
-  enable :sessions, :method_overide
+  enable :method_override, :sessions
+  register Sinatra::Flash
+
+
 
    
    
@@ -26,9 +30,15 @@ class MakersBNB < Sinatra::Base
   end 
 
   post '/sign_up' do
+    if params[:Password] != params[:Password_confirmation]
+      flash[:notice] = 'Your passwords do not match'
+      redirect '/'
+    else
     session[:user] = User.create(
-      name: params[:name], email: params[:email], password: params[:password])  
+      name: params[:name], email: params[:email], password: params[:Password])  
+
     redirect '/spaces'
+    end 
   end 
 
   get '/log_in' do 
@@ -36,9 +46,20 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/log_in' do 
-    session[:user] = User.authenticate(email: params[:email], password: params[:password])
-    redirect '/spaces'
+    session[:user] = User.authenticate(email: params[:email], password: params[:Password])
+    if session[:user] == nil
+      flash[:notice] = 'Your details do not match'
+      redirect '/log_in'
+    else 
+      redirect '/spaces'
+    end      
   end
+
+  get '/log_out' do
+    session.clear
+    flash[:notice] = 'You have logged out'
+    redirect '/log_in'
+  end 
 
   get '/spaces' do
     if session[:search] == nil

@@ -12,12 +12,12 @@
     <div>
         <a class="btn" href="/log_in">Log in</a>
     </div>
-
+    <%= flash[:notice]%>
     <form action="/sign_up" method="post" class='sign_up_form'>
     <input required type='text' name='name' placeholder='fullname'>
     <input required type="email" name="email" placeholder="Enter email">
-    <input required type="password" name="Password" placeholder="Enter password">
-    <input required type="password" name="Password confirmation" placeholder="Confirm the password">
+    <input minlength="5" required type="password" name="Password" placeholder="Enter password">
+    <input required type="password" name="Password_confirmation" placeholder="Confirm the password">
     <input class="button" type="submit" value="Sign up">
     </form>
     
