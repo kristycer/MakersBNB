@@ -25,9 +25,11 @@ class User
   end
 
   def self.authenticate(email:, password:)
-    search = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
+    return unless any(email)
 
-    return unless search.any?
+    search = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
+    p "user"
+    p search[0]
 
     return unless BCrypt::Password.new(search[0]['password']) == password
 
@@ -37,4 +39,11 @@ class User
   def book_request(request)
     @requests << request
   end
+
+
+  private
+  def self.any(email)
+    search = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
+    search.first.nil?
+  end 
 end

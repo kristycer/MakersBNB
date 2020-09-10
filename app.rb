@@ -4,9 +4,11 @@ require './models/user'
 require './models/space'
 require './models/booking'
 require 'sinatra/base'
+require 'sinatra/flash'
 
 class MakersBNB < Sinatra::Base
-  enable :sessions
+  enable :method_override, :sessions
+  register Sinatra::Flash
 
   helpers do
     def current_space
@@ -34,8 +36,22 @@ class MakersBNB < Sinatra::Base
 
   post '/log_in' do 
     session[:user] = User.authenticate(email: params[:email], password: params[:password])
-    redirect '/spaces'
+    p session[:user]
+    if session[:user] != nil
+      redirect '/spaces'
+      end 
+      
+      flash[:notice] = 'Your details do not match'
+      redirect '/log_in'
+    
+     
   end
+
+  get '/log_out' do
+    session.clear
+    flash[:notice] = 'You have logged out'
+    redirect '/log_in'
+  end 
 
   get '/spaces' do
     if session[:search] == nil
