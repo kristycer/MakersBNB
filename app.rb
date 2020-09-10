@@ -3,11 +3,14 @@ require './database_connection_setup'
 require './models/user'
 require './models/space'
 require './models/booking'
+require './models/confirmation'
 require 'sinatra/base'
 
 class MakersBNB < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_overide
 
+   
+   
   helpers do
     def current_space
       @current_space ||= Space.find(id: session[:space_id])
@@ -58,12 +61,13 @@ class MakersBNB < Sinatra::Base
   get '/spaces/:id/booking' do
     session[:owner_id] = params[:owner_id]
     @space_id = params[:id]
+    @ello_ello = Confirmation.find(property_id: @space_id)
     erb :booking
   end
 
   post '/spaces/:id/booking' do
     session[:space_id] = params[:id]
-    Booking.create(property_name: current_space.name, booking_date: params['date'], total_price: current_space.price, name: @user.name, email: @user.email, owner_id: session[:owner_id])
+    Booking.create(property_name: current_space.name, booking_date: params['date'], total_price: current_space.price, name: @user.name, email: @user.email, owner_id: session[:owner_id], property_id: current_space.id)
     redirect '/spaces'
   end
 
@@ -79,6 +83,16 @@ class MakersBNB < Sinatra::Base
   get '/requests' do
     @requests = Booking.find(id: @user.id) 
     erb :requests
+  end
+
+  post '/requests/confirm' do
+    Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'])
+    redirect '/spaces'
+  end
+
+  post '/requests/deny' do
+   DatabaseConnection.query("DELETE FROM requests WHERE id = #{params['id']}")
+    redirect '/requests'
   end
   
   run! if app_file == $0
