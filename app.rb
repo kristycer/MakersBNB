@@ -25,9 +25,15 @@ class MakersBNB < Sinatra::Base
   end 
 
   post '/sign_up' do
+    if params[:Password] != params[:Password_confirmation]
+      flash[:notice] = 'Your passwords do not match'
+      redirect '/'
+    else
     session[:user] = User.create(
       name: params[:name], email: params[:email], password: params[:Password])  
+
     redirect '/spaces'
+    end 
   end 
 
   get '/log_in' do 
