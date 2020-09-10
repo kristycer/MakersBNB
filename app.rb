@@ -75,7 +75,8 @@ class MakersBNB < Sinatra::Base
     redirect '/spaces'
   end
 
-  get '/requests' do 
+  get '/requests' do
+    @requests = Booking.find(id: @user.id) 
     erb :requests
   end
   

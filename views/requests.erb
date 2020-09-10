@@ -1,9 +1,9 @@
 <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
 <h1>Requests</h1>
 <ul >
-  <% @user.requests.each do |request|%>
-    <div  >
-      <h3  ><%= request['house'] %> from <%= request['name'] %> email: <%= request['email'] %> </h3>
+  <% @requests.each do |request|%>
+    <div>
+      <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %> </h3>
       <a class='btn' href="">Confirm</a>
       <a class='btn' href="">Deny</a>
     </div>
