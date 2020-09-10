@@ -2,11 +2,17 @@
 require './database_connection_setup'
 require './models/user'
 require './models/space'
-
+require './models/booking'
 require 'sinatra/base'
 
 class MakersBNB < Sinatra::Base
-  enable :sessions  
+  enable :sessions
+
+  helpers do
+    def current_space
+      @current_space ||= Space.find(id: session[:space_id])
+    end
+  end
   
   before do
     @user = session[:user]
@@ -54,10 +60,9 @@ class MakersBNB < Sinatra::Base
     erb :booking
   end
 
-  post '/spaces/booking' do
-    # Booking.create(id: params[''], property_name: params[''], booking_date: params[''], total_price: params[''], name: params[''], email: params['']
-    # )
-    p params
+  post '/spaces/:id/booking' do
+    session[:space_id] = params[:id]
+    Booking.create(property_name: current_space.name, booking_date: params['date'], total_price: current_space.price, name: @user.name, email: @user.email)
     redirect '/spaces'
   end
 
@@ -68,7 +73,8 @@ class MakersBNB < Sinatra::Base
       price: params['property-price'], available_from: params['available-from'], 
       available_to: params['available-to'], owner: @user.id)
     redirect '/spaces'
-  end 
+  end
+
   get '/requests' do 
     erb :requests
   end

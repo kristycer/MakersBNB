@@ -32,7 +32,7 @@
 	</script>
 </head>
 <body>
-<form action="/spaces" method="GET" >
+<form action="/spaces/<%=@space_id%>/booking" method="POST" >
 <div class="container">
    <div class="panel panel-primary">
       <div class="panel-heading">Make a Booking</div>
@@ -42,7 +42,7 @@
                <div class="form-group">
                   <label class="control-label">Date of Stay</label>
                   <div class='input-group date' id='datetimepicker5'>
-                     <input type='text' class="form-control" />
+                     <input type='text' class="form-control" name="date">
                      <span class="input-group-addon">
                      <span class="glyphicon glyphicon-calendar"></span>
                      </span>
