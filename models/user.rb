@@ -3,19 +3,12 @@ require 'bcrypt'
 
 class User 
 
-  attr_reader :id, :name, :email, :requests
+  attr_reader :id, :name, :email
 
   def initialize(id:, name:, email:)
     @id = id
     @name = name
     @email = email
-    @requests = [ 
-      {
-        "house" => "House Swamp",
-        "name" => "John",
-        "email" => "john@email.com"
-      }
-    ]
   end
 
   def self.create(name:, email:, password:)

@@ -35,11 +35,5 @@ describe User do
     end
   end
 
-  describe '#requests' do
-    it "owner can see requests" do
-      user = User.create(name: 'Example', email: 'example@me.com', password: 'password123')
-      user.book_request('house')
-      expect(user.requests.length).to eq 2
-    end
-  end
+
 end

@@ -28,6 +28,7 @@
       <h3><%= space.name %></h3>
       <p><%= space.description %> <%= space.location %> £<%= space.price %><p>
       <form action="spaces/<%= space.id %>/booking" method="GET">
+       <input hidden name="owner_id" value="<%=space.owner%>">
        <input type="submit" value="Book"/>
       </form>
     </li>

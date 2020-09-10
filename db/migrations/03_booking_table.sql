@@ -1,1 +1,1 @@
-CREATE TABLE requests(id SERIAL PRIMARY KEY, property_name VARCHAR(140), booking_date DATE, total_price NUMERIC, name VARCHAR(140), email VARCHAR(60));
+CREATE TABLE requests(id SERIAL PRIMARY KEY, property_name VARCHAR(140), booking_date DATE, total_price NUMERIC, name VARCHAR(140), email VARCHAR(60), owner_id VARCHAR);
