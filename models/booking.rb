@@ -12,10 +12,10 @@ class Booking
         @email = email
       end
     
-      def self.create(property_name:, booking_date:, total_price:, name:, email:, owner_id:)
+      def self.create(property_name:, booking_date:, total_price:, name:, email:, owner_id:, property_id:)
         booking = DatabaseConnection.query(
-          "INSERT INTO requests(property_name, booking_date, total_price, name, email, owner_id) 
-          VALUES('#{property_name}','#{booking_date}','#{total_price}','#{name}','#{email}','#{owner_id}') 
+          "INSERT INTO requests(property_name, booking_date, total_price, name, email, owner_id, property_id) 
+          VALUES('#{property_name}','#{booking_date}','#{total_price}','#{name}','#{email}','#{owner_id}', '#{property_id}') 
           RETURNING id, property_name, booking_date, total_price, name, email;")
     
         Booking.new(

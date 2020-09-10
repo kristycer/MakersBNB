@@ -2,7 +2,7 @@ require './models/database_connection'
 
 class Space
 
-  attr_reader :id, :name, :description, :location, :price, :available_from, :available_to, :owner
+  attr_reader :id, :name, :description, :location, :price, :available_from, :available_to, :owner, :booked_dates
 
   def initialize(
     id:, name:, description:, location:, price:, available_from:, available_to:, owner:)
@@ -15,6 +15,7 @@ class Space
     @available_from = available_from
     @available_to = available_to
     @owner = owner
+    @booked_dates = []
   end
 
   def self.create(name:, description:, location:, price:, available_from:, available_to:, owner:)

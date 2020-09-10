@@ -63,7 +63,7 @@ class MakersBNB < Sinatra::Base
 
   post '/spaces/:id/booking' do
     session[:space_id] = params[:id]
-    Booking.create(property_name: current_space.name, booking_date: params['date'], total_price: current_space.price, name: @user.name, email: @user.email, owner_id: session[:owner_id])
+    Booking.create(property_name: current_space.name, booking_date: params['date'], total_price: current_space.price, name: @user.name, email: @user.email, owner_id: session[:owner_id], property_id: current_space.id)
     redirect '/spaces'
   end
 
