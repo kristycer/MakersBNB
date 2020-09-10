@@ -8,7 +8,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 
 class MakersBNB < Sinatra::Base
-  enable :method_override, :sessions
+  enable :sessions, :method_override
   register Sinatra::Flash
 
 
@@ -111,7 +111,7 @@ class MakersBNB < Sinatra::Base
     redirect '/spaces'
   end
 
-  post '/requests/deny' do
+  delete '/requests/deny' do
    DatabaseConnection.query("DELETE FROM requests WHERE id = #{params['id']}")
     redirect '/requests'
   end
