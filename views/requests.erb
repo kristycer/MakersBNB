@@ -5,6 +5,7 @@
     <div>
       <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %> </h3>
         <form action='/requests/confirm' method='post'>
+          <input hidden name="property_id" value="<%=request.property_id%>">
           <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
         </form>
        <form action='/request/deny' method='post'>

@@ -63,6 +63,8 @@ class MakersBNB < Sinatra::Base
 
   post '/spaces/:id/booking' do
     session[:space_id] = params[:id]
+    @booked_array_hash_thing = { params[:id] => [] }
+    session[:my_first_hash] = booked_array_hash_thing
     Booking.create(property_name: current_space.name, booking_date: params['date'], total_price: current_space.price, name: @user.name, email: @user.email, owner_id: session[:owner_id], property_id: current_space.id)
     redirect '/spaces'
   end
@@ -82,7 +84,12 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/requests/confirm' do
-    p params
+    booked_space = Space.find(id: params['property_id'] )
+    booked_space.booked_dates.push(params['date'])
+    session[:my_first_hash][params['property_id']] = params['date']
+    p session[:my_first_hash]
+    p "HERERERERE"
+    p booked_space
     redirect '/spaces'
   end
   
