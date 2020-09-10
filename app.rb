@@ -26,7 +26,7 @@ class MakersBNB < Sinatra::Base
 
   post '/sign_up' do
     session[:user] = User.create(
-      name: params[:name], email: params[:email], password: params[:password])  
+      name: params[:name], email: params[:email], password: params[:Password])  
     redirect '/spaces'
   end 
 
@@ -35,16 +35,13 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/log_in' do 
-    session[:user] = User.authenticate(email: params[:email], password: params[:password])
-    p session[:user]
-    if session[:user] != nil
-      redirect '/spaces'
-      end 
-      
+    session[:user] = User.authenticate(email: params[:email], password: params[:Password])
+    if session[:user] == nil
       flash[:notice] = 'Your details do not match'
       redirect '/log_in'
-    
-     
+    else 
+      redirect '/spaces'
+    end      
   end
 
   get '/log_out' do
