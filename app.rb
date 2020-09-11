@@ -107,12 +107,14 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/requests/confirm' do
-    Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'])
+    p params
+    Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'], request_id: params['request_id'])
     redirect '/spaces'
   end
 
-  delete '/requests/deny' do
-   DatabaseConnection.query("DELETE FROM requests WHERE id = #{params['id']}")
+  post '/requests/deny' do
+  #  DatabaseConnection.query("DELETE FROM requests WHERE id = #{params['id']}")
+   DatabaseConnection.query("UPDATE requests SET approved = FALSE WHERE id = #{params['id']};")
     redirect '/requests'
   end
   

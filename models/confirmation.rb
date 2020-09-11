@@ -9,13 +9,16 @@ class Confirmation
     @booking_date = booking_date
   end
 
-  def self.confirm(property_id:, booking_date:)
+  def self.confirm(property_id:, booking_date:, request_id:)
     confirmation = DatabaseConnection.query(
       "INSERT INTO confirmations (property_id, booking_date) 
       VALUES('#{property_id}','#{booking_date}') 
       RETURNING property_id, booking_date;")
 
       Confirmation.new(property_id: confirmation[0]['property_id'], booking_date: confirmation[0]['booking_date'])
+
+      DatabaseConnection.query("UPDATE requests SET approved = TRUE WHERE id = '#{request_id}';")
+      DatabaseConnection.query("UPDATE requests SET approved = FALSE WHERE id != '#{request_id}' AND booking_date = '#{booking_date}';")
   end
 
   def self.find(property_id:)
