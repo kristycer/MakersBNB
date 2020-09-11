@@ -1,40 +1,47 @@
 <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+<% if @user_status == "user"%>
+ <h1>Request History</h1>
+<% else %> 
+  <h1>Letting History</h1>
+<%end%>
+<a class="btn" href='/spaces'> Back </a>
+
 <div class="outer-div">
-  <% if @user_status == "user"%>
-    <h1>Request History</h1>
-    <% else %> 
-    <h1>Letting History</h1>
-  <%end%>
-  <a class="btn" href='/spaces'> Back </a>
   <div id="approved-div">
-    <h3>Approved</h3>
+    <h3 class="title_h" >Approved</h3>
     <ul>
       <% @history.each do |request|%>
         <%if request.approved == 't' %>
+         <li>
           <div>
-            <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %>, <%= request.booking_date %>, APPROVED  </h3>
+            <p><%= request.name %> has requested to stay at <%= request.property_name %> on the <%= request.booking_date %></p>
+            <p>Contact email: <%= request.email %></p>
               <form action='/requests/confirm' method='post'>
                 <input hidden name="property_id" value="<%=request.property_id%>">
                 <input hidden name="request_id" value="<%=request.id%>">
               </form>
           </div>
+          </li>
         <% end %>
       <%end%>
     </ul>
   </div>
 
   <div id="rejected-div" > 
-    <h3>Rejected</h3>
+    <h3 class="title_h" >Rejected</h3>
     <ul>
       <% @history.each do |request|%>
         <%if request.approved == 'f' %>
+        <li>
           <div>
-            <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %>, <%= request.booking_date %>, REJECTED  </h3>
+            <p><%= request.name %> has requested to stay at <%= request.property_name %> on the <%= request.booking_date %></p>
+            <p>Contact email: <%= request.email %></p>
               <form action='/requests/confirm' method='post'>
                 <input hidden name="property_id" value="<%=request.property_id%>">
                 <input hidden name="request_id" value="<%=request.id%>">
               </form>
           </div>
+          </li>
         <% end %>
       <%end%>
     </ul>

@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MakersBNB - Booking</title>
+<title>RubyVago | Booking</title>
   <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 	<style type="text/css">
   
 		.container {
-			margin-top: 10%;
+         margin-top: 10%;
 		}
 		.btn-primary {
 			width: 50%;
-		}
+      }
+      
+      h1 {
+         font-family: 'Playfair Display', serif;
+         font-size: 2em;
+      }
+
+      div {
+         border-color: black;
+      }
+
+      .panel-primary {
+         background: white;
+      }
+
+      .panel-primary>.panel-heading {
+         background: black;
+      }
+
+      .btn-primary {
+         background: black;
+      }
 	</style>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
@@ -32,14 +54,17 @@
       });
 	</script>
 </head>
+<h1>Pick your date</h31>
 <body>
+<a class="btn" href='/spaces'> Back </a>
+
 <form action="/spaces/<%=@space_id%>/booking" method="POST" >
 <div class="container">
    <div class="panel panel-primary">
       <div class="panel-heading">Make a Booking</div>
       <div class="panel-body">
          <div class="row">
-            <div class='col-md-7'>
+            <div class='col-md-12'>
                <div class="form-group">
                   <label class="control-label">Date of Stay</label>
                   <div class='input-group date' id='datetimepicker5'>

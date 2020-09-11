@@ -1,24 +1,45 @@
 body {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
-  background-size: 200% 100% !important;
-  animation: move 10s ease infinite;
-  transform: translate3d(0, 0, 0);
-  background: linear-gradient(45deg, #49d49d 10%, #a2c7e5 90%);
-  height: 100vh;
+  background: #C6FFDD;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* height: 100vh; */
 }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5em;
+}
+
+.log_btn {
+  text-decoration: none;
+  color: black;
+  width: 20%;
+  height: 0.5em;
+  padding: 0.4em;
+  border: 1px solid grey;
+  background: whitesmoke;
+  margin: 0 auto;
+  border-radius: 12px;
+  font-size: 0.3em;
+  text-align: center;
+}
+
 .btn {
   text-decoration: none;
   color: black;
   padding: 0.5em;
   border: 1px solid grey;
-  background: hotpink;
+  background: greenyellow;
   margin: 0.3em;
   border-radius: 12px;
+  transition: all 1s ease-out;
 }
 
 .btn:hover{
-  background: khaki;
+  padding: 0.9em;
+  background: orange;
 }
 
 .sign_up_form {
@@ -26,8 +47,9 @@ body {
   flex-direction: column;
   width: 50%;
   margin: 0 auto;
-  margin-top: 2em;
+  margin-top: 0.6em;
 }
+
 
 .sign_up_form input {
   margin: 1em;
@@ -54,19 +76,24 @@ li {
   list-style-type: none;
   outline-style: solid;
   padding: 0.5em;
-  margin: 1em;
-}
- background: #f9f9f9;
-  height: 56px;
-  width: 120px;
- 
-  border-radius: 28px;
- 
+  margin-bottom: 1em;
 }
 
-li {
+.request {
   list-style-type: none;
   outline-style: solid;
-  padding: 0.5em;
-  margin: 1em;
+  padding: 0.5em 0.2em;
+  margin-bottom: 1em;
+}
+
+.outer-div{
+  display: flex;
+  justify-content: center;
+}
+
+.approved-div{
+  border-right: 3.5px solid black;
+}
+.title_h{
+  border-bottom: 1px solid black;
 }
