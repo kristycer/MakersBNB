@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     
-    <title>MakersBNB</title>
+    <title>RubyVago | List a Space</title>
 </head>
 <body>
-    <h1 class='header'>List a Space</h1>
-    <p>Add your property specification</p>
+  <a class="btn" href='/spaces'> Back </a>
     <div class='form'>
-    <form action='/spaces/new' method='post'>
+     <h1 class='header'>List a Space</h1>
+    <p>Add your property specification</p>
+    <form action='/spaces/new' method='post' class='sign_up_form'>
     <span class="input"></span>
       <label for="property-name">Property name</label>
         <input type="text" name='property-name'>
@@ -27,7 +29,7 @@
         <input type="text" name='available-from'>
       <label for='available-to'>Available to (YYYY/MM/DD)</label>
         <input type="text" name='available-to'>
-    <input class="button" type="submit" value="Create listing">
+    <input type="submit" value="Create listing">
     </form>
     </div>
    

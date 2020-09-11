@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakersBNB</title>
+    <title>RubyVago</title>
     <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     
 </head>
+<style>
+body {
+  background-image: url("https://www.edreams.com/blog/wp-content/uploads/sites/3/2016/03/car-friends.gif");
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4em;
+  padding: -1em;
+}
+h3 {
+  font-size: 0.3em;
+  font-weight: bold;
+  color: white;
+}
+</style>
+<h1>RubyVago<h1>
+
 <body>
   <div>
-    <div>
-        <a class="btn" href="/log_in">Log in</a>
-    </div>
     <%= flash[:notice]%>
+    <a class="log_btn" href="/log_in">Log in</a>
     <form action="/sign_up" method="post" class='sign_up_form'>
-    <input required type='text' name='name' placeholder='fullname'>
+    <h3>Join RubyVago and make your travel dreams come true</h3>
+    <input required type='text' name='name' placeholder='Full name'>
     <input required type="email" name="email" placeholder="Enter email">
     <input minlength="5" required type="password" name="Password" placeholder="Enter password">
     <input required type="password" name="Password_confirmation" placeholder="Confirm the password">
-    <input class="button" type="submit" value="Sign up">
+    <input  type="submit" value="Sign up">
     </form>
-    
   </div>  
 </body>
 </html>

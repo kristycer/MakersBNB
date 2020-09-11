@@ -1,17 +1,22 @@
 <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
-<h1>Requests</h1>
+<h1>Requests 🏠</h1>
 <ul>
   <% @requests.each do |request|%>
-    <div>
-      <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %> </h3>
-        <form action='/requests/confirm' method='post'>
-          <input hidden name="property_id" value="<%=request.property_id%>">
-          <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
+    <%if request.approved == nil %>
+      <li class='request'>
+      <div>
+        <p><%= request.name %> would like to stay at <%= request.property_name %> on the <%= request.booking_date %></p> 
+        <p>📧 contact email: <%= request.email %>  </p>
+          <form action='/requests/confirm' method='post'>
+            <input hidden name="property_id" value="<%=request.property_id%>">
+            <input hidden name="request_id" value="<%=request.id%>">
+            <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
+          </form>
+        <form action='/requests/deny' method='post'>
+          <button type="submit"  name= 'id' value="<%= request.id %>">Deny</button>
         </form>
-       <form action='/requests/deny' method='post'>
-         <input type='hidden' name='_method' value='DELETE'>
-         <button type="submit"  name= 'id' value="<%= request.id %>">Deny</button>
-       </form>
-    </div>
+      </div>
+      </li>
+    <% end %>
   <%end%>
 </ul>

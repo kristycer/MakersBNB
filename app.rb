@@ -107,13 +107,24 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/requests/confirm' do
-    Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'])
+    Confirmation.confirm(property_id: params['property_id'], booking_date: params['date'], request_id: params['request_id'])
     redirect '/spaces'
   end
 
-  delete '/requests/deny' do
-   DatabaseConnection.query("DELETE FROM requests WHERE id = #{params['id']}")
+  post '/requests/deny' do
+    DatabaseConnection.query("UPDATE requests SET approved = FALSE WHERE id = #{params['id']};")
     redirect '/requests'
+  end
+
+  get '/owner-history' do
+    @history = Booking.find(id: @user.id) 
+    erb :history
+  end
+
+  get '/user-history' do
+    @user_status = "user"
+    @history = Booking.find_requests(name: @user.name) 
+    erb :history
   end
   
   run! if app_file == $0
