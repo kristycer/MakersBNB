@@ -2,16 +2,18 @@
 <h1>Requests</h1>
 <ul>
   <% @requests.each do |request|%>
-    <div>
-      <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %> </h3>
-        <form action='/requests/confirm' method='post'>
-          <input hidden name="property_id" value="<%=request.property_id%>">
-          <input hidden name="request_id" value="<%=request.id%>">
-          <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
+    <%if request.approved == nil %>
+      <div>
+        <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %>, <%= request.booking_date %>  </h3>
+          <form action='/requests/confirm' method='post'>
+            <input hidden name="property_id" value="<%=request.property_id%>">
+            <input hidden name="request_id" value="<%=request.id%>">
+            <button type='submit' name='date' value='<%= request.booking_date %>'>Confirm</button>
+          </form>
+        <form action='/requests/deny' method='post'>
+          <button type="submit"  name= 'id' value="<%= request.id %>">Deny</button>
         </form>
-       <form action='/requests/deny' method='post'>
-         <button type="submit"  name= 'id' value="<%= request.id %>">Deny</button>
-       </form>
-    </div>
+      </div>
+    <% end %>
   <%end%>
 </ul>
