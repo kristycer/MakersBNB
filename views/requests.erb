@@ -1,5 +1,8 @@
 <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
 <h1>Requests 🏠</h1>
+
+<a class="btn" href='/spaces'> Back </a>
+
 <ul>
   <% @requests.each do |request|%>
     <%if request.approved == nil %>
