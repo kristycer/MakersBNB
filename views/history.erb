@@ -1,0 +1,41 @@
+<link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+<div class="outer-div">
+  <% if @user_status == "user"%>
+    <h1>Request History</h1>
+    <% else %> 
+    <h1>Letting History</h1>
+  <%end%>
+  <div id="approved-div">
+    <h3>Approved</h3>
+    <ul>
+      <% @history.each do |request|%>
+        <%if request.approved == 't' %>
+          <div>
+            <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %>, <%= request.booking_date %>, APPROVED  </h3>
+              <form action='/requests/confirm' method='post'>
+                <input hidden name="property_id" value="<%=request.property_id%>">
+                <input hidden name="request_id" value="<%=request.id%>">
+              </form>
+          </div>
+        <% end %>
+      <%end%>
+    </ul>
+  </div>
+
+  <div id="rejected-div" > 
+    <h3>Rejected</h3>
+    <ul>
+      <% @history.each do |request|%>
+        <%if request.approved == 'f' %>
+          <div>
+            <h3><%= request.property_name %> from <%= request.name %> email: <%= request.email %>, <%= request.booking_date %>, REJECTED  </h3>
+              <form action='/requests/confirm' method='post'>
+                <input hidden name="property_id" value="<%=request.property_id%>">
+                <input hidden name="request_id" value="<%=request.id%>">
+              </form>
+          </div>
+        <% end %>
+      <%end%>
+    </ul>
+  </div>
+</div>

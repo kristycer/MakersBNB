@@ -36,4 +36,15 @@ class Booking
             name: space['name'], email: space['email'], property_id: space['property_id'], approved: space['approved'])
           end
       end
+
+      def self.find_requests(name:)
+        requests = DatabaseConnection.query("SELECT * FROM requests WHERE name = '#{name}';")
+
+        requests.map do |space| 
+          Booking.new(
+            id: space['id'], property_name: space['property_name'], 
+            booking_date: space['booking_date'], total_price: space['total_price'], 
+            name: space['name'], email: space['email'], property_id: space['property_id'], approved: space['approved'])
+          end
+      end
 end 
