@@ -1,7 +1,5 @@
 body {
   font-family: "Open Sans Condensed", sans-serif;
-  background: #aff7f0;
-  background-image: url('https://github.com/Iliyan-Y/makersBNB/blob/confirmation_removal/public/rubyvago.png');
   text-align: center;
   background-size: 200% 100% !important;
   animation: move 10s ease infinite;
@@ -45,6 +43,20 @@ body {
 
 .button {
   background: #f9f9f9;
+  height: 56px;
+  width: 120px;
+ 
+  border-radius: 28px;
+ 
+}
+
+li {
+  list-style-type: none;
+  outline-style: solid;
+  padding: 0.5em;
+  margin: 1em;
+}
+ background: #f9f9f9;
   height: 56px;
   width: 120px;
  
