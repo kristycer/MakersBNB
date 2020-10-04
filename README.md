@@ -1,5 +1,9 @@
 # makersBNB
 
+
+A ruby project of the airbnb clone -> MakersBNB
+
+
 ```
 as a user
 so that i can let my space
